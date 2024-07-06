@@ -39,13 +39,13 @@ Indicates the proportion of the variance in the dependent variable that is predi
 When independent variables are highly correlated, it can affect the stability and interpretation of the coefficients. This can be detected using Variance Inflation Factor (VIF). A VIF value greater than 10 is typically a sign of high multicollinearity.
 
 ### Steps involved in performing insurance charge prediction using Multiple linear regression  
-Step 1: Data Preparation
-Step 2: Exploratory Data Analysis (EDA)
-Step 3: Data Preprocessing
-Step 4: Splitting the Data
-Step 5: Building the Model
-Step 6: Model Evaluation
-Step 7: Interpreting the Coefficients
+Step 1: Data Preparation  
+Step 2: Exploratory Data Analysis (EDA)  
+Step 3: Data Preprocessing  
+Step 4: Splitting the Data  
+Step 5: Building the Model  
+Step 6: Model Evaluation  
+Step 7: Interpreting the Coefficients  
 
 ### Summary
 
