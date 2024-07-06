@@ -47,9 +47,50 @@ Step 5: Building the Model
 Step 6: Model Evaluation  
 Step 7: Interpreting the Coefficients  
 
-### Summary
-
 Multiple Linear Regression is a powerful tool for understanding the relationship between a dependent variable and multiple independent variables. It relies on several assumptions, and its effectiveness depends on the quality of the data and the appropriateness of the model. Careful evaluation of the model and the data is crucial for accurate predictions and insights.
 
+
+### `src/insurance_price_prediction.py`
+```python
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LinearRegression
+from sklearn.metrics import mean_squared_error, r2_score
+
+# Load the data
+data = pd.read_csv('../data/insurance.csv')
+
+# One-hot encoding for categorical variables
+data = pd.get_dummies(data, drop_first=True)
+
+# Define the features (X) and the target (y)
+X = data.drop('charges', axis=1)
+y = data['charges']
+
+# Split the data
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+# Create the model
+model = LinearRegression()
+
+# Train the model
+model.fit(X_train, y_train)
+
+# Predict on the test set
+y_pred = model.predict(X_test)
+
+# Calculate metrics
+mse = mean_squared_error(y_test, y_pred)
+rmse = mse ** 0.5
+r2 = r2_score(y_test, y_pred)
+
+print(f'RMSE: {rmse}')
+print(f'R-squared: {r2}')
+
+# Print the coefficients
+coefficients = pd.DataFrame(model.coef_, X.columns, columns=['Coefficient'])
+print(coefficients)
 
 
